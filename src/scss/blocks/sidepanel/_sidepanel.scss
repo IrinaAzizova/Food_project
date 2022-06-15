@@ -33,9 +33,12 @@
 
 @media (max-width: 1200px) {
     .sidepanel {
-        left: 30px;
-        top: 100px;
+        left: 35px;
+        top: 180px;
         height: 380px;
+        &__text {
+            width: 125px;
+        }
         &__divider {
             height: 150px;
         }
