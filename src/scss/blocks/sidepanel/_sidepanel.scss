@@ -30,3 +30,14 @@
         }
     }
 }
+
+@media (max-width: 1200px) {
+    .sidepanel {
+        left: 30px;
+        top: 100px;
+        height: 380px;
+        &__divider {
+            height: 150px;
+        }
+    }
+}
