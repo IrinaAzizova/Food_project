@@ -44,3 +44,41 @@
         }
     }
 }
+
+@media (max-width: 992px) {
+    .sidepanel {
+        left: 15px;
+        top: 120px;
+        height: 300px;
+        &__divider {
+            height: 100px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .sidepanel {
+        left: 7px;
+        top: 85px;
+        height: 260px;
+        width: 20px;
+        &__text {
+            width: 120px;
+            height: 115px;
+            font-size: 11px;
+        }
+        &__divider {
+            height: 65px;
+        }
+        &__icon {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .sidepanel {
+        display: none;
+    }
+}

@@ -135,11 +135,54 @@
 }
 
 @media (max-width: 992px) {
-    
+    .preview {
+        padding: 0 0 100px;
+       &__life {
+            font-size: 15px;
+            margin-left: 70px;
+            margin-top: 20px;
+        }
+    }
+     .bgc_blue {
+        top: -135px;
+        height: 560px;
+    }
+    .tabcontainer {
+        width: 630px;
+    }
+    .tabcontent {
+        width: 360px;
+        &__descr {
+            top: 170px;
+            right: -250px;
+            width: 430px;
+            height: 170px;
+            padding: 20px;
+            font-size: 15px;
+            line-height: 25px;
+        } 
+    }
+    .tabheader {
+        width: 270px;
+        padding: 25px 20px;
+        &__items {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        &__item {
+            font-size: 15px;
+            margin-top: 7px;
+            &_active {
+                font-size: 18px;
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
-
+    .tabcontainer {
+        width: 510px;
+    }
 }
 
 @media (max-width: 575px) {
