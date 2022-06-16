@@ -58,6 +58,10 @@ a {
   font-weight: 400;
 }
 
+.hide {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .container {
     max-width: 1140px;
@@ -296,6 +300,20 @@ a {
     display: none;
   }
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate__fadeIn {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+}
+
 .preview {
   padding: 28px 0 100px 0;
   position: relative;
@@ -327,6 +345,7 @@ a {
 .tabcontent {
   width: 850px;
   position: relative;
+  transition: 1s all;
 }
 .tabcontent img {
   width: 100%;

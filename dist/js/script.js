@@ -86,14 +86,64 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/blocks/tabs.js":
+/*!*******************************!*\
+  !*** ./src/js/blocks/tabs.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const tabs = (contentSelector, tabsSelector, activeClass) => {
+  const tabContent = document.querySelectorAll(contentSelector),
+        tabsTittle = document.querySelectorAll(tabsSelector);
+  tabsTittle.forEach((title, i) => {
+    title.addEventListener('click', event => {
+      toggleActiveClass(activeClass);
+      showCorrectTabContent(i);
+    });
+  });
+
+  function toggleActiveClass(className) {
+    tabsTittle.forEach(title => {
+      title.classList.remove(className);
+    });
+    event.target.classList.add(className);
+  }
+
+  function showCorrectTabContent(item = 0) {
+    tabContent.forEach(tab => {
+      tab.classList.remove('animate__fadeIn');
+      tab.classList.add('hide');
+    });
+    tabContent[item].classList.remove('hide');
+    tabContent[item].classList.add('animate__fadeIn');
+  }
+
+  showCorrectTabContent();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (tabs);
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _blocks_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/tabs */ "./src/js/blocks/tabs.js");
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  Object(_blocks_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])('.tabcontent', '.tabheader__item', 'tabheader__item_active');
+});
 
 /***/ })
 
