@@ -482,8 +482,45 @@ a {
   }
 }
 @media (max-width: 768px) {
+  .preview {
+    padding: 0 0 110px;
+  }
+  .preview__life {
+    font-size: 13px;
+    margin-left: 40px;
+  }
+
+  .bgc_blue {
+    top: -110px;
+    height: 530px;
+  }
+
   .tabcontainer {
-    width: 510px;
+    width: 500px;
+  }
+
+  .tabcontent {
+    width: 290px;
+    min-height: 250px;
+  }
+  .tabcontent__descr {
+    top: 160px;
+    right: -220px;
+    width: 350px;
+    height: 213px;
+    line-height: 24px;
+  }
+
+  .tabheader {
+    width: 240px;
+    padding: 20px;
+  }
+  .tabheader__item {
+    font-size: 13px;
+    margin-top: 7px;
+  }
+  .tabheader__item_active {
+    font-size: 16px;
   }
 }
 .offer {
