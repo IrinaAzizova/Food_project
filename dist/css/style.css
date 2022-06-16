@@ -94,6 +94,10 @@ a {
     height: 30px;
     font-size: 10px;
   }
+
+  .divider {
+    width: 140px;
+  }
 }
 .header {
   display: flex;
@@ -521,6 +525,53 @@ a {
   }
   .tabheader__item_active {
     font-size: 16px;
+  }
+}
+@media (max-width: 575px) {
+  .preview {
+    padding: 15px 0 30px;
+  }
+  .preview__life {
+    margin-left: 130px;
+  }
+
+  .bgc_blue {
+    top: -70px;
+    height: 625px;
+  }
+
+  .tabcontainer {
+    flex-direction: column-reverse;
+    width: 290px;
+  }
+
+  .tabcontent {
+    min-height: 300px;
+    width: 290px;
+  }
+  .tabcontent__descr {
+    top: 130px;
+    right: -15px;
+    width: 280px;
+    height: 164px;
+    padding: 16px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  .tabheader {
+    width: 290px;
+    padding: 20px 40px 20px 20px;
+  }
+  .tabheader__items {
+    margin-top: 15px;
+  }
+  .tabheader__item {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .tabheader__item_active {
+    font-size: 14px;
   }
 }
 .offer {

@@ -219,5 +219,45 @@
 }
 
 @media (max-width: 575px) {
-
+    .preview {
+        padding: 15px 0 30px;
+        &__life {
+            margin-left: 130px;
+        }
+    }
+    .bgc_blue {
+        top: -70px;
+        height: 625px;
+    }
+    .tabcontainer {
+        flex-direction: column-reverse;
+        width: 290px;
+    }
+    .tabcontent {
+        min-height: 300px;
+        width: 290px;
+        &__descr {
+            top: 130px;
+            right: -15px;
+            width: 280px;
+            height: 164px;
+            padding: 16px;
+            font-size: 12px;
+            line-height: 22px;
+        }
+    }
+    .tabheader {
+        width: 290px;
+        padding: 20px 40px 20px 20px;   
+        &__items {
+            margin-top: 15px;
+        }
+        &__item {
+            font-size: 12px;
+            margin-top: 6px;
+            &_active {
+                font-size: 14px;
+            }
+        } 
+    }
 }
