@@ -68,6 +68,9 @@ a {
     .container {
         max-width: 1140px;
     }
+    .title {
+        font-size: 31px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -78,6 +81,9 @@ a {
         width: 160px;
         height: 50px;
         font-size: 15px;
+    }
+    .title {
+        font-size: 25px;
     }
 }
 
@@ -104,5 +110,8 @@ a {
     .divider {
         width: 140px;
     }
+    .title {
+        font-size: 20px;
+        text-align: center;
+    }
 }
-

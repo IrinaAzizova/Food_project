@@ -13,9 +13,6 @@
 }
 
 
-
-
-
 .preview {
     padding: 28px 0 100px 0;
     position: relative;
@@ -31,7 +28,7 @@
     right: 0;
     top: -155px;
     width: 50vw;
-    height: 900px;
+    height: 938px;
     background: rgba(146, 242, 255, 0.15);
     z-index: -1;
 }
@@ -104,13 +101,7 @@
         }
     }
     .bgc_blue {
-        position: absolute;
-        right: 0;
-        top: -155px;
-        width: 50vw;
-        height: 900px;
-        background: rgba(146, 242, 255, 0.15);
-        z-index: -1;
+        height: 782px;
     }
     .tabcontainer {
         width: 840px;
@@ -210,7 +201,7 @@
     }
     .bgc_blue {
         top: -110px;
-        height: 530px;
+        height: 557px;
     }
     .tabcontainer {
         width: 500px;
