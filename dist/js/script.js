@@ -128,6 +128,62 @@ const tabs = (contentSelector, tabsSelector, activeClass) => {
 
 /***/ }),
 
+/***/ "./src/js/blocks/timer.js":
+/*!********************************!*\
+  !*** ./src/js/blocks/timer.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const timer = (deadLine, daysSelector, hoursSelector, minutesSelector, secondsSelector) => {
+  const days = document.querySelector(daysSelector),
+        hours = document.querySelector(hoursSelector),
+        minutes = document.querySelector(minutesSelector),
+        seconds = document.querySelector(secondsSelector),
+        end = new Date(deadLine).getTime();
+  let timeLeft;
+  let startTimer = setTimeout(setTime, 1000);
+  setTime();
+
+  function setTime() {
+    timeLeft = end - new Date().getTime();
+
+    if (timeLeft < 0) {
+      timeLeft = 0;
+      clearInterval(startTimer);
+    }
+
+    const day = Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
+          hour = Math.floor(timeLeft / (1000 * 60 * 60) % 24),
+          min = Math.floor(timeLeft / (1000 * 60) % 60),
+          sec = Math.floor(timeLeft / 1000 % 60);
+
+    function getZero(num) {
+      if (num < 10) {
+        return `0${num}`;
+      } else {
+        return num;
+      }
+    }
+
+    days.textContent = getZero(day);
+    hours.textContent = getZero(hour);
+    minutes.textContent = getZero(min);
+    seconds.textContent = getZero(sec);
+    console.log('ok');
+
+    if (timeLeft > 0) {
+      startTimer = setTimeout(setTime, 1000);
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (timer);
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -138,11 +194,14 @@ const tabs = (contentSelector, tabsSelector, activeClass) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/tabs */ "./src/js/blocks/tabs.js");
+/* harmony import */ var _blocks_timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/timer */ "./src/js/blocks/timer.js");
+
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])('.tabcontent', '.tabheader__item', 'tabheader__item_active');
+  Object(_blocks_timer__WEBPACK_IMPORTED_MODULE_1__["default"])('2022-06-20T13:00:00', '#days', '#hours', '#minutes', '#seconds');
 });
 
 /***/ })
