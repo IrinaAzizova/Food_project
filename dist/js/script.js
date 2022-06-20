@@ -143,38 +143,43 @@ const timer = (deadLine, daysSelector, hoursSelector, minutesSelector, secondsSe
         minutes = document.querySelector(minutesSelector),
         seconds = document.querySelector(secondsSelector),
         end = new Date(deadLine).getTime();
-  let timeLeft;
+  let time;
   let startTimer = setTimeout(setTime, 1000);
   setTime();
 
+  function getTime() {
+    time = end - new Date().getTime();
+    const d = Math.floor(time / (1000 * 60 * 60 * 24)),
+          h = Math.floor(time / (1000 * 60 * 60) % 24),
+          m = Math.floor(time / (1000 * 60) % 60),
+          s = Math.floor(time / 1000 % 60);
+    return {
+      time,
+      d,
+      h,
+      m,
+      s
+    };
+  }
+
+  function addZero(num) {
+    if (num >= 0 && num < 10) {
+      return `0${num}`;
+    } else if (num < 0) {
+      return '00';
+    } else {
+      return num;
+    }
+  }
+
   function setTime() {
-    timeLeft = end - new Date().getTime();
+    const result = getTime();
+    days.textContent = addZero(result.d);
+    hours.textContent = addZero(result.h);
+    minutes.textContent = addZero(result.m);
+    seconds.textContent = addZero(result.s);
 
-    if (timeLeft < 0) {
-      timeLeft = 0;
-      clearInterval(startTimer);
-    }
-
-    const day = Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
-          hour = Math.floor(timeLeft / (1000 * 60 * 60) % 24),
-          min = Math.floor(timeLeft / (1000 * 60) % 60),
-          sec = Math.floor(timeLeft / 1000 % 60);
-
-    function getZero(num) {
-      if (num < 10) {
-        return `0${num}`;
-      } else {
-        return num;
-      }
-    }
-
-    days.textContent = getZero(day);
-    hours.textContent = getZero(hour);
-    minutes.textContent = getZero(min);
-    seconds.textContent = getZero(sec);
-    console.log('ok');
-
-    if (timeLeft > 0) {
+    if (result.time > 0) {
       startTimer = setTimeout(setTime, 1000);
     }
   }
@@ -201,7 +206,7 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])('.tabcontent', '.tabheader__item', 'tabheader__item_active');
-  Object(_blocks_timer__WEBPACK_IMPORTED_MODULE_1__["default"])('2022-06-20T13:00:00', '#days', '#hours', '#minutes', '#seconds');
+  Object(_blocks_timer__WEBPACK_IMPORTED_MODULE_1__["default"])('2022-07-01T00:00:00', '#days', '#hours', '#minutes', '#seconds');
 });
 
 /***/ })

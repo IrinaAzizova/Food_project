@@ -5,36 +5,41 @@ const timer = (deadLine, daysSelector, hoursSelector, minutesSelector, secondsSe
         minutes = document.querySelector(minutesSelector),
         seconds = document.querySelector(secondsSelector),
         end = (new Date(deadLine)).getTime();
-    let timeLeft;
+    let time;
     
     let startTimer = setTimeout(setTime, 1000);
     setTime();
 
-    function setTime() {   
-        timeLeft = end - (new Date()).getTime();
-        if (timeLeft < 0) {
-            timeLeft = 0;
-            clearInterval(startTimer);
-        } 
-        const day = Math.floor(timeLeft /(1000 * 60 * 60 * 24)),
-              hour = Math.floor(timeLeft / (1000 * 60 * 60) % 24),
-              min = Math.floor(timeLeft /(1000 * 60) % 60),
-              sec = Math.floor(timeLeft /1000 % 60);
+    function getTime() {
+        time = end - (new Date()).getTime();
+        
+        const d = Math.floor(time /(1000 * 60 * 60 * 24)),
+              h = Math.floor(time / (1000 * 60 * 60) % 24),
+              m = Math.floor(time /(1000 * 60) % 60),
+              s = Math.floor(time /1000 % 60);
 
-        function getZero(num) {
-            if (num < 10) {
-                return `0${num}`;
-            } else {
-                return num;
-            }
+        return {time, d, h, m, s};
+    } 
+    
+    function addZero(num) {
+        if (num >= 0 && num < 10) {
+            return `0${num}`;
+        } else if (num < 0) {
+            return '00';
+        }else {
+            return num;
         }
+    }
 
-        days.textContent = getZero(day);
-        hours.textContent = getZero(hour);
-        minutes.textContent = getZero(min);
-        seconds.textContent = getZero(sec); 
-        console.log('ok');
-        if (timeLeft > 0) {
+    function setTime() {   
+        const result = getTime();
+
+        days.textContent = addZero(result.d);
+        hours.textContent = addZero(result.h);
+        minutes.textContent = addZero(result.m);
+        seconds.textContent = addZero(result.s); 
+        
+        if (result.time > 0) {
             startTimer = setTimeout(setTime, 1000);
         }
     }   
