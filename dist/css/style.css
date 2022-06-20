@@ -1185,3 +1185,23 @@ a {
   width: 280px;
   margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  .modal .btn {
+    height: 50px;
+    font-size: 17px;
+    width: 250px;
+  }
+}
+@media (max-width: 576px) {
+  .modal__input {
+    width: 250px;
+  }
+  .modal__content {
+    width: 98%;
+    margin: 100px auto 0;
+  }
+  .modal__title {
+    font-size: 19px;
+  }
+}

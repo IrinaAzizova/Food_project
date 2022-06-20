@@ -58,3 +58,28 @@
         margin: 0 auto;
     }
 }
+
+@media (max-width: 768px) {
+    .modal {
+        .btn {
+            height: 50px;
+            font-size: 17px;
+            width: 250px;
+        }
+    } 
+}
+
+@media (max-width: 576px) {
+    .modal{
+        &__input {
+            width: 250px;
+        }
+        &__content {
+            width: 98%;
+            margin: 100px auto 0;
+        }
+        &__title {
+            font-size: 19px;
+        }
+    }
+}
