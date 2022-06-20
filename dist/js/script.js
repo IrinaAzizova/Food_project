@@ -86,6 +86,75 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/blocks/getScrollbarWidth.js":
+/*!********************************************!*\
+  !*** ./src/js/blocks/getScrollbarWidth.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const getScrollbarWidth = () => {
+  let div = document.createElement('div');
+  div.style.overflowY = 'scroll';
+  div.style.width = '50px';
+  div.style.height = '50px';
+  document.body.append(div);
+  let scrollWidth = div.offsetWidth - div.clientWidth;
+  div.remove();
+  return scrollWidth;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getScrollbarWidth);
+
+/***/ }),
+
+/***/ "./src/js/blocks/modal.js":
+/*!********************************!*\
+  !*** ./src/js/blocks/modal.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getScrollbarWidth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getScrollbarWidth */ "./src/js/blocks/getScrollbarWidth.js");
+
+
+const modal = triggerSelector => {
+  const triggers = document.querySelectorAll(triggerSelector),
+        modalWindiw = document.querySelector('.modal'),
+        close = modalWindiw.querySelector('[data-close]');
+  triggers.forEach(item => {
+    item.addEventListener('click', () => {
+      modalWindiw.classList.add('animate__fadeIn');
+      modalWindiw.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      document.body.style.marginRight = `${Object(_getScrollbarWidth__WEBPACK_IMPORTED_MODULE_0__["default"])()}px`;
+    });
+  });
+
+  function hideModal() {
+    modalWindiw.style.display = 'none';
+    document.body.style.overflow = 'visible';
+    document.body.style.marginRight = 0;
+  }
+
+  close.addEventListener('click', () => {
+    hideModal();
+  });
+  modalWindiw.addEventListener('click', event => {
+    if (event.target && event.target.matches('.modal')) {
+      hideModal();
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (modal);
+
+/***/ }),
+
 /***/ "./src/js/blocks/tabs.js":
 /*!*******************************!*\
   !*** ./src/js/blocks/tabs.js ***!
@@ -200,6 +269,8 @@ const timer = (deadLine, daysSelector, hoursSelector, minutesSelector, secondsSe
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/tabs */ "./src/js/blocks/tabs.js");
 /* harmony import */ var _blocks_timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/timer */ "./src/js/blocks/timer.js");
+/* harmony import */ var _blocks_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/modal */ "./src/js/blocks/modal.js");
+
 
 
 
@@ -207,6 +278,7 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])('.tabcontent', '.tabheader__item', 'tabheader__item_active');
   Object(_blocks_timer__WEBPACK_IMPORTED_MODULE_1__["default"])('2022-07-01T00:00:00', '#days', '#hours', '#minutes', '#seconds');
+  Object(_blocks_modal__WEBPACK_IMPORTED_MODULE_2__["default"])('[data-modal]');
 });
 
 /***/ })
