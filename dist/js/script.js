@@ -110,6 +110,59 @@ const getScrollbarWidth = () => {
 
 /***/ }),
 
+/***/ "./src/js/blocks/menuCards.js":
+/*!************************************!*\
+  !*** ./src/js/blocks/menuCards.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const menuCards = () => {
+  class Card {
+    constructor(src, alt, tittle, descr, price, parentSelector, transfer = 57) {
+      this.src = src;
+      this.alt = alt;
+      this.tittle = tittle;
+      this.descr = descr;
+      this.price = price;
+      this.parentElement = document.querySelector(parentSelector);
+      this.transfer = transfer;
+      this.changeToRub();
+    }
+
+    changeToRub() {
+      return this.price *= this.transfer;
+    }
+
+    render() {
+      const cardItem = document.createElement('div');
+      cardItem.classList.add('menu__item');
+      cardItem.innerHTML = `
+                <img src=${this.src} alt=${this.alt}>
+                <h3 class="menu__item-subtitle">${this.tittle}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Цена:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
+                </div>
+            `;
+      this.parentElement.append(cardItem);
+    }
+
+  }
+
+  new Card("img/tabs/vegy.jpg", "vegy", 'Меню "Фитнес"', 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!', 9, '.menu__field .container').render();
+  new Card("img/tabs/elite.jpg", "elite", 'Меню "Премиум"', 'В меню "Премиум" мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!', 20, '.menu__field .container').render();
+  new Card("img/tabs/post.jpg", "post", 'Меню "Постное"', 'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.', 15, '.menu__field .container').render();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (menuCards);
+
+/***/ }),
+
 /***/ "./src/js/blocks/modal.js":
 /*!********************************!*\
   !*** ./src/js/blocks/modal.js ***!
@@ -132,7 +185,6 @@ const modal = triggerSelector => {
     modalWindiw.style.display = 'block';
     document.body.style.overflow = 'hidden';
     document.body.style.marginRight = `${Object(_getScrollbarWidth__WEBPACK_IMPORTED_MODULE_0__["default"])()}px`;
-    console.log('ok');
     clearInterval(modalTimer);
   }
 
@@ -287,6 +339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/tabs */ "./src/js/blocks/tabs.js");
 /* harmony import */ var _blocks_timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/timer */ "./src/js/blocks/timer.js");
 /* harmony import */ var _blocks_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/modal */ "./src/js/blocks/modal.js");
+/* harmony import */ var _blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/menuCards */ "./src/js/blocks/menuCards.js");
+
 
 
 
@@ -296,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])('.tabcontent', '.tabheader__item', 'tabheader__item_active');
   Object(_blocks_timer__WEBPACK_IMPORTED_MODULE_1__["default"])('2022-07-01T00:00:00', '#days', '#hours', '#minutes', '#seconds');
   Object(_blocks_modal__WEBPACK_IMPORTED_MODULE_2__["default"])('[data-modal]');
+  Object(_blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__["default"])();
 });
 
 /***/ })

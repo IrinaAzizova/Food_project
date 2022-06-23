@@ -10,7 +10,6 @@ const modal = (triggerSelector) => {
         modalWindiw.style.display = 'block';
         document.body.style.overflow = 'hidden';
         document.body.style.marginRight = `${getScrollbarWidth()}px`;
-        console.log('ok');
         clearInterval(modalTimer);
     }
 
