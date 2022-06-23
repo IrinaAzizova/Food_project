@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     &__text {
-        width: 120px;
+        width: 125px;
         height: 120px;
         font-size: 14px;        
         span {
@@ -33,7 +33,7 @@
 
 @media (max-width: 1200px) {
     .sidepanel {
-        left: 35px;
+        left: 30px;
         top: 180px;
         height: 380px;
         &__text {
