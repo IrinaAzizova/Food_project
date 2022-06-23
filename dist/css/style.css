@@ -892,7 +892,7 @@ a {
 }
 .menu .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
 }
 .menu .title {
@@ -946,6 +946,9 @@ a {
 }
 
 @media (max-width: 1200px) {
+  .menu .container {
+    justify-content: space-between;
+  }
   .menu__field {
     padding: 50px 80px;
     width: 100%;
