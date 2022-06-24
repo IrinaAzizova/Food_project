@@ -4,6 +4,7 @@ import tabs from "./blocks/tabs";
 import timer from "./blocks/timer";
 import modal from "./blocks/modal";
 import menuCards from "./blocks/menuCards";
+import forms from "./blocks/forms";
 
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -12,4 +13,5 @@ document.addEventListener('DOMContentLoaded', () =>{
     timer('2022-07-01T00:00:00', '#days', '#hours', '#minutes', '#seconds');
     modal('[data-modal]');
     menuCards();
+    forms();
 });

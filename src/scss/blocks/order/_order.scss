@@ -25,3 +25,44 @@
         outline: none;
     }
 }
+
+@media (max-width: 1200px) {
+    .order__input {
+        width: 240px;
+    }
+    
+}
+
+@media (max-width: 992px) {
+    .order {
+        padding-bottom: 80px;
+        padding: 0 70px 80px;
+        &__input {
+            width: 350px;
+            margin-bottom: 30px;
+        }
+        &__form {
+            flex-direction: column;
+            padding: 0;
+            margin: 50px auto 0;
+            img {
+                transform: scale(1.5);
+                margin-bottom: 20px;
+            }
+        }
+    }    
+}
+
+@media (max-width: 576px) {
+    .order {
+        padding-bottom: 80px;
+        padding: 0 15px 50px;
+        &__input {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        &__input {
+            width: 100%;
+        }
+    }
+}

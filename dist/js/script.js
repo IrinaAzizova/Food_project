@@ -86,6 +86,23 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/blocks/forms.js":
+/*!********************************!*\
+  !*** ./src/js/blocks/forms.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const forms = () => {
+  console.log('ok');
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (forms);
+
+/***/ }),
+
 /***/ "./src/js/blocks/getScrollbarWidth.js":
 /*!********************************************!*\
   !*** ./src/js/blocks/getScrollbarWidth.js ***!
@@ -348,6 +365,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/timer */ "./src/js/blocks/timer.js");
 /* harmony import */ var _blocks_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/modal */ "./src/js/blocks/modal.js");
 /* harmony import */ var _blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/menuCards */ "./src/js/blocks/menuCards.js");
+/* harmony import */ var _blocks_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/forms */ "./src/js/blocks/forms.js");
+
 
 
 
@@ -359,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_timer__WEBPACK_IMPORTED_MODULE_1__["default"])('2022-07-01T00:00:00', '#days', '#hours', '#minutes', '#seconds');
   Object(_blocks_modal__WEBPACK_IMPORTED_MODULE_2__["default"])('[data-modal]');
   Object(_blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_blocks_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
 });
 
 /***/ })

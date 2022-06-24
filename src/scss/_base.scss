@@ -82,6 +82,9 @@ a {
         height: 50px;
         font-size: 15px;
     }
+    .order .btn {
+        width: 350px;
+    }
     .title {
         font-size: 24px;
     }
@@ -96,6 +99,10 @@ a {
         height: 35px;
         font-size: 13px;
     }
+    .order .btn {
+        height: 45px;
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 575px) {
@@ -106,6 +113,9 @@ a {
         width: 100px;
         height: 30px;
         font-size: 10px;
+    }
+    .order .btn {
+        width: 100%;
     }
     .divider {
         width: 140px;
