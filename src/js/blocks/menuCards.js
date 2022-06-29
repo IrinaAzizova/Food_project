@@ -1,8 +1,11 @@
+import getResource from "./getResource";
+import axios from "axios";
+
 const menuCards = () => {
     class Card {
-        constructor(src, alt, tittle, descr, price, parentSelector, ...classes) {
+        constructor(src, altimg, tittle, descr, price, parentSelector, ...classes) {
             this.src = src;
-            this.alt = alt;
+            this.alt = altimg;
             this.tittle = tittle;
             this.descr = descr;
             this.price = price;
@@ -37,34 +40,22 @@ const menuCards = () => {
         }
     }
 
-    new Card(
-        "img/tabs/vegy.jpg",
-        "vegy",
-        'Меню "Фитнес"',
-        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-        9,
-        '.menu__field .container'
-    ).render();
+    getResource('http://localhost:3000/menu')
+        .then(json => 
+            json.forEach(({img, altimg, title, descr, price}) => 
+                new Card(img, altimg, title, descr, price, '.menu__field .container', 'menu__item')
+                    .render()
+            )
+        );
 
-    new Card(
-        "img/tabs/elite.jpg",
-        "elite",
-        'Меню "Премиум"',
-        'В меню "Премиум" мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
-        20,
-        '.menu__field .container',
-        'menu__item'
-    ).render();
-
-    new Card(
-        "img/tabs/post.jpg",
-        "post",
-        'Меню "Постное"',
-        'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
-        15,
-        '.menu__field .container',
-        'menu__item'
-        ).render();
+    /* _____Create cards with using axios library____
+    
+    axios.get('http://localhost:3000/menu')
+        .then(response => 
+            response.forEach(({img, altimg, title, descr, price}) => 
+                new Card(img, altimg, title, descr, price, '.menu__field .container', 'menu__item')
+                    .render()
+            )); */
 };
 
 export default menuCards;

@@ -1,5 +1,6 @@
 import hideModal from "./hideMidal";
 import openModal from "./openModal";
+import postData from "./postData";
 
 const sendForm = () => {
     
@@ -12,11 +13,10 @@ const sendForm = () => {
     };
 
     forms.forEach(item => {
-        postData(item);
+        bindPostData(item);
     });
-    
-    function postData(form) {
 
+    function bindPostData(form) {
         form.addEventListener('submit', event => {
             event.preventDefault(); 
 
@@ -49,19 +49,11 @@ const sendForm = () => {
 
             const formData = new FormData(form);
 
-            const object = {};
-            formData.forEach((value, key) => {
-                object[key] = value;
-            });
+            const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-            fetch('server.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(object)
-            }).then(data => data.text()
-            ).then(data => {
+            postData('http://localhost:3000/requests', json)
+            /* .then(data => data.text()) */
+            .then(data => {
                 console.log(data);
                     showThanksModal(message.success);
             }).catch(() => {

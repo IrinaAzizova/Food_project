@@ -66,7 +66,6 @@ a {
   .container {
     max-width: 1140px;
   }
-
   .title {
     font-size: 31px;
   }
@@ -75,17 +74,14 @@ a {
   .container {
     max-width: 960px;
   }
-
   .btn {
     width: 160px;
     height: 50px;
     font-size: 15px;
   }
-
   .order .btn {
     width: 350px;
   }
-
   .title {
     font-size: 24px;
   }
@@ -94,13 +90,11 @@ a {
   .container {
     max-width: 720px;
   }
-
   .btn {
     width: 135px;
     height: 35px;
     font-size: 13px;
   }
-
   .order .btn {
     height: 45px;
     font-size: 15px;
@@ -110,21 +104,17 @@ a {
   .container {
     max-width: 540px;
   }
-
   .btn {
     width: 100px;
     height: 30px;
     font-size: 10px;
   }
-
   .order .btn {
     width: 100%;
   }
-
   .divider {
     width: 140px;
   }
-
   .title {
     font-size: 20px;
     text-align: center;
@@ -430,15 +420,12 @@ a {
   .preview__life {
     margin-left: 80px;
   }
-
   .bgc_blue {
     height: 782px;
   }
-
   .tabcontainer {
     width: 840px;
   }
-
   .tabcontent {
     width: 840px;
     position: relative;
@@ -458,7 +445,6 @@ a {
     font-size: 20px;
     line-height: 30px;
   }
-
   .tabheader {
     width: 270px;
     padding: 35px 25px;
@@ -488,16 +474,13 @@ a {
     margin-left: 70px;
     margin-top: 20px;
   }
-
   .bgc_blue {
     top: -135px;
     height: 560px;
   }
-
   .tabcontainer {
     width: 630px;
   }
-
   .tabcontent {
     width: 360px;
   }
@@ -510,7 +493,6 @@ a {
     font-size: 15px;
     line-height: 25px;
   }
-
   .tabheader {
     width: 270px;
     padding: 25px 20px;
@@ -535,16 +517,13 @@ a {
     font-size: 13px;
     margin-left: 40px;
   }
-
   .bgc_blue {
     top: -110px;
     height: 557px;
   }
-
   .tabcontainer {
     width: 500px;
   }
-
   .tabcontent {
     width: 290px;
     min-height: 250px;
@@ -556,7 +535,6 @@ a {
     height: 213px;
     line-height: 24px;
   }
-
   .tabheader {
     width: 240px;
     padding: 20px;
@@ -576,17 +554,14 @@ a {
   .preview__life {
     margin-left: 130px;
   }
-
   .bgc_blue {
     top: -70px;
     height: 625px;
   }
-
   .tabcontainer {
     flex-direction: column-reverse;
     width: 290px;
   }
-
   .tabcontent {
     min-height: 300px;
     width: 290px;
@@ -600,7 +575,6 @@ a {
     font-size: 12px;
     line-height: 22px;
   }
-
   .tabheader {
     width: 290px;
     padding: 20px 40px 20px 20px;
@@ -1011,12 +985,10 @@ a {
   .menu__field {
     padding: 30px 15px;
   }
-
   .menu__item {
     width: 100%;
     font-size: 14px;
   }
-
   .menu__item img {
     height: 180px;
   }
