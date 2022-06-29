@@ -2072,20 +2072,16 @@ const sendForm = () => {
             `;
       form.insertAdjacentElement('afterend', statusMessage);
       const formData = new FormData(form);
-      /* const object = {};
+      const object = {};
       formData.forEach((value, key) => {
-          object[key] = value;
-      }); */
-
+        object[key] = value;
+      });
       fetch('server.php', {
         method: 'POST',
-
-        /* headers: {
-            'Content-Type': 'application/json'
-        }, */
-        body:
-        /* JSON.stringify(object) */
-        formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(object)
       }).then(data => data.text()).then(data => {
         console.log(data);
         showThanksModal(message.success);
@@ -2095,18 +2091,6 @@ const sendForm = () => {
         statusMessage.remove();
         form.reset();
       });
-      /* const json = JSON.stringify(object);
-      request.send(json);
-      request.addEventListener('load', () => {
-          if (request.status === 200) {
-            } else {
-              showThanksModal(message.failure);                            
-          }
-          setTimeout(() => {
-              statusMessage.remove();
-              form.reset();
-          } , 2000);     
-      }); */
     });
   }
 };
