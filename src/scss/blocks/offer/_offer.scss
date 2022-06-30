@@ -1,3 +1,68 @@
+:root {
+    --left-start: 650px;
+    --left-end: 0px;
+}
+
+@keyframes nextSlide-next {
+    from {
+      left: var(--left-start);
+    }  
+    to {
+      left: var(--left-end);
+    }
+}
+
+@keyframes nextSlide-prev {
+    from {
+      left: 0;
+    }  
+    to {
+      left: -650px;
+    }
+}
+
+@keyframes prevSlide-current {
+    from {
+      left: 0px;
+    }  
+    to {
+      left: 650px;
+    }
+}
+
+@keyframes prevSlide-prev {
+    from {
+      left: -650px;
+    }  
+    to {
+      left: 0px;
+    }
+}
+
+.animate_nextSlide-next {
+    display: block;
+    animation-name: nextSlide-next;
+    animation-duration: 0.5s;
+}
+
+.animate_nextSlide-prev {
+    display: block;
+    animation-name: nextSlide-prev;
+    animation-duration: 0.5s;
+}
+
+.animate_prevSlide-current {
+    display: block;
+    animation-name: prevSlide-current;
+    animation-duration: 0.5s;
+}
+
+.animate_prevSlide-prev {
+    display: block;
+    animation-name: prevSlide-prev;
+    animation-duration: 0.5s;
+}
+
 .offer {
     padding: 70px 0 100px 0;
     position: relative;
@@ -62,8 +127,10 @@
             display: flex;
             overflow:hidden;
             width: 100%;
+            height: 390px;
             margin-top: 15px;
             box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+            position: relative;
         }
         &-prev {
             margin-right: 10px;
@@ -81,7 +148,12 @@
     }
     &__slide {
         width: 650px;
-        /*height: 390px;*/
+        height: 390px;
+        position: absolute;
+        top: 0;
+        left:0;
+        transition: all 0.3s;
+
         img {
             width: 650px;
             height: 100%;

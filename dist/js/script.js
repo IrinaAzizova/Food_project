@@ -5253,7 +5253,9 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
   const prevBtn = document.querySelector(prevBtnSelector),
         nextBtn = document.querySelector(nextBtnSelector),
         total = document.querySelector(totalNumSelector),
-        currentNum = document.querySelector(currentNumSelector);
+        currentNum = document.querySelector(currentNumSelector),
+        width = parseInt(window.getComputedStyle(document.querySelector(parentSelector)).width);
+  console.log(width);
   let index = 0;
 
   class Slide {
@@ -5264,14 +5266,19 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
       this.parentNode = document.querySelector(parent);
     }
 
-    render() {
+    render(direction) {
       const slide = document.createElement('div');
-      slide.classList.add('offer__slide', 'animate__fadeIn');
       slide.innerHTML = `
                 <img src=${this.imgSrc} alt=${this.altImg}>
             `;
-      this.parentNode.innerHTML = '';
-      this.parentNode.append(slide);
+
+      if (direction === 'next') {
+        slide.classList.add('offer__slide', 'animate_nextSlide-next');
+        this.parentNode.append(slide);
+      } else if (direction === 'prev') {
+        slide.classList.add('offer__slide', 'animate_prevSlide-prev');
+        this.parentNode.insertAdjacentElement('afterbegin', slide);
+      }
     }
 
   }
@@ -5286,21 +5293,43 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
     }
 
     currentNum.textContent = Object(_addZero__WEBPACK_IMPORTED_MODULE_1__["default"])(index + 1);
-    new Slide(data[index][1], data[index][0]).render();
   }
 
   Object(_getResource__WEBPACK_IMPORTED_MODULE_0__["default"])('http://localhost:3000/slides').then(data => {
-    data.forEach(item => new Slide(item[1], item[0]).render());
     total.textContent = Object(_addZero__WEBPACK_IMPORTED_MODULE_1__["default"])(data.length);
     showCurrentSlide(data);
-    nextBtn.addEventListener('click', () => {
+    new Slide(data[index][1], data[index][0]).render('next');
+    return data;
+  }).then(data => {
+    const showNextSlide = () => {
       index++;
       showCurrentSlide(data);
-    });
-    prevBtn.addEventListener('click', () => {
+      new Slide(data[index][1], data[index][0]).render('next');
+      document.querySelector('.offer__slider-wrapper').firstElementChild.classList.remove('animate_nextSlide-next', 'animate_prevSlide-prev');
+      document.querySelector('.offer__slider-wrapper').firstElementChild.classList.add('animate_nextSlide-prev');
+      nextBtn.removeEventListener('click', showNextSlide);
+      setTimeout(() => {
+        document.querySelector('.offer__slider-wrapper').firstElementChild.remove();
+        nextBtn.addEventListener('click', showNextSlide);
+      }, 500);
+    };
+
+    nextBtn.addEventListener('click', showNextSlide);
+
+    const showPrevSlide = () => {
       index--;
       showCurrentSlide(data);
-    });
+      new Slide(data[index][1], data[index][0]).render('prev');
+      document.querySelector('.offer__slider-wrapper').lastElementChild.classList.remove('animate_nextSlide-next', 'animate_prevSlide-prev');
+      document.querySelector('.offer__slider-wrapper').lastElementChild.classList.add('animate_prevSlide-current');
+      prevBtn.removeEventListener('click', showPrevSlide);
+      setTimeout(() => {
+        document.querySelector('.offer__slider-wrapper').lastElementChild.remove();
+        prevBtn.addEventListener('click', showPrevSlide);
+      }, 500);
+    };
+
+    prevBtn.addEventListener('click', showPrevSlide);
   });
 };
 
