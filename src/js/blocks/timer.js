@@ -1,3 +1,5 @@
+import addZero from "./addZero";
+
 const timer = (deadLine, daysSelector, hoursSelector, minutesSelector, secondsSelector) => {
 
     const days = document.querySelector(daysSelector),
@@ -21,16 +23,6 @@ const timer = (deadLine, daysSelector, hoursSelector, minutesSelector, secondsSe
         return {time, d, h, m, s};
     } 
     
-    function addZero(num) {
-        if (num >= 0 && num < 10) {
-            return `0${num}`;
-        } else if (num < 0) {
-            return '00';
-        }else {
-            return num;
-        }
-    }
-
     function setTime() {   
         const result = getTime();
 

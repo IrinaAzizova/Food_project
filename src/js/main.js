@@ -5,6 +5,7 @@ import timer from "./blocks/timer";
 import modal from "./blocks/modal";
 import menuCards from "./blocks/menuCards";
 import sendForm from "./blocks/forms";
+import slider from "./blocks/slider";
 
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -14,4 +15,5 @@ document.addEventListener('DOMContentLoaded', () =>{
     modal('[data-modal]', '.modal');
     menuCards();
     sendForm();
+    slider('.offer__slider-prev', '.offer__slider-next', '#total', '#current', ".offer__slider-wrapper");
 });

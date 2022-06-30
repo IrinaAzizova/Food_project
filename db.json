@@ -28,5 +28,11 @@
       "phone": "123",
       "id": 1
     }
+  ],
+  "slides": [ 
+    ["pepper", "img/slider/pepper.jpg"],
+    ["food", "img/slider/food-12.jpg"],
+    ["oil", "img/slider/olive-oil.jpg"],
+    ["paprika", "img/slider/paprika.jpg"]
   ]
 }
