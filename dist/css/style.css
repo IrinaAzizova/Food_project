@@ -590,17 +590,12 @@ a {
     font-size: 14px;
   }
 }
-:root {
-  --left-start: 650px;
-  --left-end: 0px;
-}
-
 @keyframes nextSlide-next {
   from {
-    left: var(--left-start);
+    left: 650px;
   }
   to {
-    left: var(--left-end);
+    left: 0px;
   }
 }
 @keyframes nextSlide-prev {

@@ -5273,10 +5273,22 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
             `;
 
       if (direction === 'next') {
-        slide.classList.add('offer__slide', 'animate_nextSlide-next');
+        slide.classList.add('offer__slide'
+        /*  'animate_nextSlide-next' */
+        );
+        slide.animate([{
+          left: `${width}px`
+        }, {
+          left: '0px'
+        }], 500);
         this.parentNode.append(slide);
       } else if (direction === 'prev') {
-        slide.classList.add('offer__slide', 'animate_prevSlide-prev');
+        slide.classList.add('offer__slide');
+        slide.animate([{
+          left: `${-width}px`
+        }, {
+          left: '0px'
+        }], 500);
         this.parentNode.insertAdjacentElement('afterbegin', slide);
       }
     }
@@ -5305,8 +5317,11 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
       index++;
       showCurrentSlide(data);
       new Slide(data[index][1], data[index][0]).render('next');
-      document.querySelector('.offer__slider-wrapper').firstElementChild.classList.remove('animate_nextSlide-next', 'animate_prevSlide-prev');
-      document.querySelector('.offer__slider-wrapper').firstElementChild.classList.add('animate_nextSlide-prev');
+      document.querySelector('.offer__slider-wrapper').firstElementChild.animate([{
+        left: '0px'
+      }, {
+        left: `${-width}px`
+      }], 500);
       nextBtn.removeEventListener('click', showNextSlide);
       setTimeout(() => {
         document.querySelector('.offer__slider-wrapper').firstElementChild.remove();
@@ -5320,8 +5335,11 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
       index--;
       showCurrentSlide(data);
       new Slide(data[index][1], data[index][0]).render('prev');
-      document.querySelector('.offer__slider-wrapper').lastElementChild.classList.remove('animate_nextSlide-next', 'animate_prevSlide-prev');
-      document.querySelector('.offer__slider-wrapper').lastElementChild.classList.add('animate_prevSlide-current');
+      document.querySelector('.offer__slider-wrapper').lastElementChild.animate([{
+        left: '0px'
+      }, {
+        left: `${width}px`
+      }], 500);
       prevBtn.removeEventListener('click', showPrevSlide);
       setTimeout(() => {
         document.querySelector('.offer__slider-wrapper').lastElementChild.remove();
