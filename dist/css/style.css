@@ -726,7 +726,7 @@ a {
     padding: 0 80px;
   }
   .offer .bgc_y {
-    height: 938px;
+    height: 730px;
   }
   .offer__advantages {
     margin-top: 30px;
@@ -744,9 +744,6 @@ a {
 @media (max-width: 992px) {
   .offer {
     padding: 70px 0 70px 0;
-  }
-  .offer .bgc_y {
-    height: 968px;
   }
   .offer__descr {
     font-size: 16px;
@@ -794,7 +791,7 @@ a {
     font-size: 40px;
   }
   .offer .bgc_y {
-    height: 1086px;
+    height: 830px;
   }
   .offer .carousel-indicators {
     top: 90%;
@@ -809,6 +806,7 @@ a {
   }
   .offer .bgc_y {
     top: 20px;
+    height: 1010px;
   }
   .offer__advantages {
     margin-top: 10px;
@@ -914,6 +912,38 @@ a {
   font-size: 42px;
 }
 
+@media (max-width: 768px) {
+  .calculating__choose {
+    margin-top: 0px;
+  }
+  .calculating__choose-item {
+    margin-top: 30px;
+    width: 200px;
+  }
+  .calculating__choose_medium {
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .calculating__choose_big {
+    width: 100%;
+    justify-content: space-around;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 576px) {
+  .calculating__choose-item {
+    width: 150px;
+  }
+  .calculating__total {
+    width: 100%;
+    flex-direction: column;
+  }
+  .calculating__divider {
+    width: 300px;
+  }
+}
 .menu {
   padding: 40px 0 50px 0;
 }

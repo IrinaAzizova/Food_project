@@ -88,3 +88,45 @@
         }
     }
 }
+
+@media (max-width: 768px){
+    .calculating {
+        &__choose {
+            margin-top: 0px;
+            &-item {
+                margin-top: 30px;
+                width: 200px;
+            }
+            &_medium {
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            &_big {
+            width: 100%;
+            justify-content: space-around;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            
+        }
+        }
+        
+    }
+}
+
+@media (max-width: 576px) {
+    .calculating {
+        &__choose {
+            &-item {
+                width: 150px;
+            }
+        }
+        &__total {
+            width: 100%;
+            flex-direction: column;
+        }
+        &__divider {
+            width: 300px;
+        }
+    }
+}
