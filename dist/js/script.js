@@ -5250,12 +5250,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSelector, parentSelector) => {
-  const prevBtn = document.querySelector(prevBtnSelector),
+  const offerSlider = document.querySelector('.offer__slider'),
+        sliderWrapper = document.querySelector(parentSelector),
+        prevBtn = document.querySelector(prevBtnSelector),
         nextBtn = document.querySelector(nextBtnSelector),
         total = document.querySelector(totalNumSelector),
         currentNum = document.querySelector(currentNumSelector),
-        width = parseInt(window.getComputedStyle(document.querySelector(parentSelector)).width);
-  console.log(width);
+        width = parseInt(window.getComputedStyle(sliderWrapper).width);
   let index = 0;
 
   class Slide {
@@ -5307,24 +5308,55 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
     currentNum.textContent = Object(_addZero__WEBPACK_IMPORTED_MODULE_1__["default"])(index + 1);
   }
 
+  class SlideNavigation {
+    constructor(numOfSlides, parentNode) {
+      this.numOfSlides = numOfSlides;
+      this.parentNode = parentNode;
+    }
+
+    render() {
+      const dotWrapper = document.createElement('div');
+      dotWrapper.classList.add('carousel-indicators');
+      this.parentNode.append(dotWrapper);
+
+      for (let i = 0; i < this.numOfSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dotWrapper.append(dot);
+      }
+    }
+
+  }
+
+  function showCurrentDot(index, dotsSelector) {
+    const dots = document.querySelectorAll(dotsSelector);
+    dots.forEach((dot, i) => {
+      dot.classList.remove('dot-active');
+    });
+    dots[index].classList.add('dot-active');
+  }
+
   Object(_getResource__WEBPACK_IMPORTED_MODULE_0__["default"])('http://localhost:3000/slides').then(data => {
     total.textContent = Object(_addZero__WEBPACK_IMPORTED_MODULE_1__["default"])(data.length);
     showCurrentSlide(data);
     new Slide(data[index][1], data[index][0]).render('next');
+    new SlideNavigation(data.length, offerSlider).render();
+    showCurrentDot(index, '.dot');
     return data;
   }).then(data => {
     const showNextSlide = () => {
       index++;
       showCurrentSlide(data);
+      showCurrentDot(index, '.dot');
       new Slide(data[index][1], data[index][0]).render('next');
-      document.querySelector('.offer__slider-wrapper').firstElementChild.animate([{
+      offerSlider.querySelector('.offer__slider-wrapper').firstElementChild.animate([{
         left: '0px'
       }, {
         left: `${-width}px`
       }], 500);
       nextBtn.removeEventListener('click', showNextSlide);
       setTimeout(() => {
-        document.querySelector('.offer__slider-wrapper').firstElementChild.remove();
+        offerSlider.querySelector('.offer__slider-wrapper').firstElementChild.remove();
         nextBtn.addEventListener('click', showNextSlide);
       }, 500);
     };
@@ -5334,20 +5366,38 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
     const showPrevSlide = () => {
       index--;
       showCurrentSlide(data);
+      showCurrentDot(index, '.dot');
       new Slide(data[index][1], data[index][0]).render('prev');
-      document.querySelector('.offer__slider-wrapper').lastElementChild.animate([{
+      offerSlider.querySelector('.offer__slider-wrapper').lastElementChild.animate([{
         left: '0px'
       }, {
         left: `${width}px`
       }], 500);
       prevBtn.removeEventListener('click', showPrevSlide);
       setTimeout(() => {
-        document.querySelector('.offer__slider-wrapper').lastElementChild.remove();
+        offerSlider.querySelector('.offer__slider-wrapper').lastElementChild.remove();
         prevBtn.addEventListener('click', showPrevSlide);
       }, 500);
     };
 
     prevBtn.addEventListener('click', showPrevSlide);
+    const dots = offerSlider.querySelectorAll('.dot');
+    dots.forEach((eachDot, i) => {
+      eachDot.addEventListener('click', event => {
+        dots.forEach(dot => dot.classList.remove('dot-active'));
+        event.target.classList.add('dot-active');
+
+        if (i > index) {
+          index = i - 1;
+          showNextSlide();
+        } else if (i < index) {
+          index = i + 1;
+          showPrevSlide();
+        }
+
+        showCurrentDot(index, '.dot');
+      });
+    });
   });
 };
 
