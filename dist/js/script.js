@@ -4906,6 +4906,124 @@ const addZero = num => {
 
 /***/ }),
 
+/***/ "./src/js/blocks/calculator.js":
+/*!*************************************!*\
+  !*** ./src/js/blocks/calculator.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const calculator = totalSelector => {
+  const total = document.querySelector(totalSelector),
+        sexElems = document.querySelectorAll('[data-toggle]'),
+        activityElems = document.querySelectorAll('[data-factor]');
+  const growthElem = document.querySelector('#height'),
+        weightElem = document.querySelector('#weight'),
+        ageElem = document.querySelector('#age');
+  let sex = !localStorage.getItem('sex') ? 'women' : localStorage.getItem('sex'),
+      activity = !localStorage.getItem('activity') ? "1.375" : localStorage.getItem('activity'),
+      growth = !localStorage.getItem('growth') ? '' : localStorage.getItem('growth') === 'NaN' ? '' : localStorage.getItem('growth'),
+      weight = !localStorage.getItem('weight') ? '' : localStorage.getItem('weight') === 'NaN' ? '' : localStorage.getItem('weight'),
+      age = !localStorage.getItem('age') ? '' : localStorage.getItem('age') === 'NaN' ? '' : localStorage.getItem('age');
+  growthElem.value = growth;
+  weightElem.value = weight;
+  ageElem.value = age;
+
+  function setActiveClass(items) {
+    items.forEach(elem => {
+      elem.classList.remove('calculating__choose-item_active');
+
+      if (elem.getAttribute('data-toggle') === sex) {
+        elem.classList.add('calculating__choose-item_active');
+      }
+
+      if (elem.getAttribute('data-factor') == activity) {
+        elem.classList.add('calculating__choose-item_active');
+      }
+    });
+  }
+
+  function caloryCalculation() {
+    if (!growth || !weight || !age) {
+      total.textContent = '____';
+    } else {
+      if (sex === 'men') {
+        console.log(activity);
+        total.textContent = Math.round((88.36 + 13.4 * parseFloat(weight) + 4.8 * parseFloat(growth) - 5.7 * parseFloat(age)) * parseFloat(activity));
+      } else {
+        total.textContent = Math.round((447.6 + 9.2 * parseFloat(weight) + 3.1 * parseFloat(growth) - 4.3 * parseFloat(age)) * parseFloat(activity));
+      }
+    }
+  }
+
+  function calorieСountingByClick(elems) {
+    elems.forEach(item => {
+      item.addEventListener('click', event => {
+        if (item.getAttribute('data-toggle')) {
+          sex = event.target.getAttribute('data-toggle');
+          localStorage.setItem('sex', sex);
+        }
+
+        if (item.getAttribute('data-factor')) {
+          activity = event.target.getAttribute('data-factor');
+          localStorage.setItem('activity', activity);
+        }
+
+        setActiveClass(elems);
+        caloryCalculation();
+      });
+    });
+  }
+
+  function calorieCountingByInput(elem) {
+    const notDiggits = /[a-zа-я\-\:\"]/ig;
+    elem.addEventListener('input', event => {
+      if (event.data && event.data.match(/\,/ig)) {
+        event.target.value = event.target.value.replace(/\,/ig, '.');
+      } else if (event.data && event.data.match(/[\.\.]/ig)) {
+        event.target.value = event.target.value.replace(/\.\./ig, '.');
+      } else if (event.data && event.data.match(notDiggits) && !event.data.match(/\./g)) {
+        event.target.value = event.target.value.replace(notDiggits, '');
+      }
+
+      if (elem.getAttribute('id') === 'height') {
+        growth = parseFloat(event.target.value);
+        localStorage.setItem('growth', growth);
+        console.log(growth);
+      }
+
+      if (elem.getAttribute('id') === 'weight') {
+        weight = parseFloat(event.target.value);
+        localStorage.setItem('weight', event.target.weight);
+        console.log(weight);
+      }
+
+      if (elem.getAttribute('id') === 'age') {
+        age = parseFloat(value);
+        localStorage.setItem('age', age);
+        console.log(age);
+      }
+
+      caloryCalculation();
+    });
+  }
+
+  setActiveClass(sexElems);
+  setActiveClass(activityElems);
+  caloryCalculation();
+  calorieСountingByClick(sexElems);
+  calorieСountingByClick(activityElems);
+  calorieCountingByInput(growthElem);
+  calorieCountingByInput(weightElem);
+  calorieCountingByInput(ageElem);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculator);
+
+/***/ }),
+
 /***/ "./src/js/blocks/forms.js":
 /*!********************************!*\
   !*** ./src/js/blocks/forms.js ***!
@@ -5517,6 +5635,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/menuCards */ "./src/js/blocks/menuCards.js");
 /* harmony import */ var _blocks_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/forms */ "./src/js/blocks/forms.js");
 /* harmony import */ var _blocks_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/slider */ "./src/js/blocks/slider.js");
+/* harmony import */ var _blocks_calculator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/calculator */ "./src/js/blocks/calculator.js");
+
 
 
 
@@ -5532,6 +5652,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__["default"])();
   Object(_blocks_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
   Object(_blocks_slider__WEBPACK_IMPORTED_MODULE_5__["default"])('.offer__slider-prev', '.offer__slider-next', '#total', '#current', ".offer__slider-wrapper");
+  Object(_blocks_calculator__WEBPACK_IMPORTED_MODULE_6__["default"])('.calculating__result span');
 });
 
 /***/ })

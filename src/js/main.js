@@ -6,6 +6,7 @@ import modal from "./blocks/modal";
 import menuCards from "./blocks/menuCards";
 import sendForm from "./blocks/forms";
 import slider from "./blocks/slider";
+import calculator from "./blocks/calculator";
 
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -16,4 +17,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     menuCards();
     sendForm();
     slider('.offer__slider-prev', '.offer__slider-next', '#total', '#current', ".offer__slider-wrapper");
+    calculator('.calculating__result span');
 });
+
