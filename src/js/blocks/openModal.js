@@ -7,7 +7,9 @@ function openModal() {
     modalWindiw.style.display = 'block';
     document.body.style.overflow = 'hidden';
     document.body.style.marginRight = `${getScrollbarWidth()}px`;
-    clearInterval(modalTimer);
+    if (modalTimer) {
+        clearInterval(modalTimer);
+    }
 }
 
 const modalTimer = setTimeout(openModal, 50000);

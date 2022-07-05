@@ -79,16 +79,7 @@ const calculator = () => {
                 target.value = target.value.slice(0, target.value.search(/\./i) + 1);
                 console.log(target.value.slice(target.value.search(/\./i)));
             }
-        }
-
-        if (target.id == 'age') {
-            if (target.value > 110 || target.value < 0) {
-                ageElem.style.border = '1px solid red';
-            } else {
-                heightElem.style.border = 'none';
-            }
-        }
-        
+        }        
     }
 
     function calorieCountingByInput(elem){
@@ -141,17 +132,6 @@ const calculator = () => {
     calorieCountingByInput(heightElem);
     calorieCountingByInput(weightElem);
     calorieCountingByInput(ageElem);
-    
-    /* let growth = !localStorage.getItem('growth') ? '' : localStorage.getItem('growth') === 'NaN' || localStorage.getItem('growth') === 'undefined' ? '' : localStorage.getItem('growth'),
-        weight = !localStorage.getItem('weight') ? '' : localStorage.getItem('weight') === 'NaN' || localStorage.getItem('weigth') === 'undefined' ? '' : localStorage.getItem('weight'),
-        age = !localStorage.getItem('age') ? '' : localStorage.getItem('age') === 'NaN' || localStorage.getItem('age') === 'undefined' ? '' : localStorage.getItem('age');
-
-    
-
-    calorieCountingByInput(growthElem);
-    calorieCountingByInput(weightElem);
-    calorieCountingByInput(ageElem); */
-
 };
 
 export default calculator;

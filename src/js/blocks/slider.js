@@ -1,19 +1,17 @@
 import getResource from "./getResource";
 import addZero from "./addZero";
 
-const slider = (prevBtnSelector, nextBtnSelector,
+const slider = ({prevBtnSelector, nextBtnSelector,
                 totalNumSelector, currentNumSelector,
-                parentSelector) => {
-    const offerSlider = document.querySelector('.offer__slider'),
+                parentSelector, slideSelector}) => {
+    const offerSlider = document.querySelector(slideSelector),
           sliderWrapper = document.querySelector(parentSelector),
           prevBtn = document.querySelector(prevBtnSelector),
           nextBtn = document.querySelector(nextBtnSelector),
           total = document.querySelector(totalNumSelector),
           currentNum = document.querySelector(currentNumSelector),
           width = parseInt(window.getComputedStyle(sliderWrapper).width);
-    let index = 0;   
-    
-
+    let index = 0;  
 
     class Slide {
         constructor(imgSrc, altImg, parent = parentSelector) {
@@ -28,7 +26,7 @@ const slider = (prevBtnSelector, nextBtnSelector,
                 <img src=${this.imgSrc} alt=${this.altImg}>
             `;
             if (direction === 'next'){
-                slide.classList.add('offer__slide',/*  'animate_nextSlide-next' */);
+                slide.classList.add('offer__slide',);
                 slide.animate([
                     {left: `${width}px`},
                     {left: '0px'}
@@ -71,9 +69,7 @@ const slider = (prevBtnSelector, nextBtnSelector,
                 dotWrapper.append(dot);
             }
         }
-    }
-
-    
+    }    
 
     function showCurrentDot(index, dotsSelector) {
         const dots = document.querySelectorAll(dotsSelector);
@@ -82,8 +78,6 @@ const slider = (prevBtnSelector, nextBtnSelector,
         });
         dots[index].classList.add('dot-active');
     }
-
-
 
     getResource('http://localhost:3000/slides')
         .then(data => {
@@ -143,13 +137,9 @@ const slider = (prevBtnSelector, nextBtnSelector,
                         showPrevSlide();
                     }                     
                     showCurrentDot(index, '.dot');
-                });
-                
-            });
-            
-        });
-
-        
+                });                
+            });            
+        });        
 };
 
 export default slider;

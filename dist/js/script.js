@@ -5001,14 +5001,6 @@ const calculator = () => {
         console.log(target.value.slice(target.value.search(/\./i)));
       }
     }
-
-    if (target.id == 'age') {
-      if (target.value > 110 || target.value < 0) {
-        ageElem.style.border = '1px solid red';
-      } else {
-        heightElem.style.border = 'none';
-      }
-    }
   }
 
   function calorieCountingByInput(elem) {
@@ -5060,13 +5052,6 @@ const calculator = () => {
   calorieCountingByInput(heightElem);
   calorieCountingByInput(weightElem);
   calorieCountingByInput(ageElem);
-  /* let growth = !localStorage.getItem('growth') ? '' : localStorage.getItem('growth') === 'NaN' || localStorage.getItem('growth') === 'undefined' ? '' : localStorage.getItem('growth'),
-      weight = !localStorage.getItem('weight') ? '' : localStorage.getItem('weight') === 'NaN' || localStorage.getItem('weigth') === 'undefined' ? '' : localStorage.getItem('weight'),
-      age = !localStorage.getItem('age') ? '' : localStorage.getItem('age') === 'NaN' || localStorage.getItem('age') === 'undefined' ? '' : localStorage.getItem('age');
-    
-    calorieCountingByInput(growthElem);
-  calorieCountingByInput(weightElem);
-  calorieCountingByInput(ageElem); */
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculator);
@@ -5370,7 +5355,10 @@ function openModal() {
   modalWindiw.style.display = 'block';
   document.body.style.overflow = 'hidden';
   document.body.style.marginRight = `${Object(_getScrollbarWidth__WEBPACK_IMPORTED_MODULE_0__["default"])()}px`;
-  clearInterval(modalTimer);
+
+  if (modalTimer) {
+    clearInterval(modalTimer);
+  }
 }
 
 const modalTimer = setTimeout(openModal, 50000);
@@ -5416,8 +5404,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSelector, parentSelector) => {
-  const offerSlider = document.querySelector('.offer__slider'),
+const slider = _ref => {
+  let {
+    prevBtnSelector,
+    nextBtnSelector,
+    totalNumSelector,
+    currentNumSelector,
+    parentSelector,
+    slideSelector
+  } = _ref;
+  const offerSlider = document.querySelector(slideSelector),
         sliderWrapper = document.querySelector(parentSelector),
         prevBtn = document.querySelector(prevBtnSelector),
         nextBtn = document.querySelector(nextBtnSelector),
@@ -5441,9 +5437,7 @@ const slider = (prevBtnSelector, nextBtnSelector, totalNumSelector, currentNumSe
             `;
 
       if (direction === 'next') {
-        slide.classList.add('offer__slide'
-        /*  'animate_nextSlide-next' */
-        );
+        slide.classList.add('offer__slide');
         slide.animate([{
           left: `${width}px`
         }, {
@@ -5700,7 +5694,14 @@ document.addEventListener('DOMContentLoaded', () => {
   Object(_blocks_modal__WEBPACK_IMPORTED_MODULE_2__["default"])('[data-modal]', '.modal');
   Object(_blocks_menuCards__WEBPACK_IMPORTED_MODULE_3__["default"])();
   Object(_blocks_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  Object(_blocks_slider__WEBPACK_IMPORTED_MODULE_5__["default"])('.offer__slider-prev', '.offer__slider-next', '#total', '#current', ".offer__slider-wrapper");
+  Object(_blocks_slider__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    prevBtnSelector: '.offer__slider-prev',
+    nextBtnSelector: '.offer__slider-next',
+    totalNumSelector: '#total',
+    currentNumSelector: '#current',
+    parentSelector: ".offer__slider-wrapper",
+    slideSelector: '.offer__slider'
+  });
   Object(_blocks_calculator__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 

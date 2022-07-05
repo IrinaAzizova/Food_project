@@ -16,7 +16,12 @@ document.addEventListener('DOMContentLoaded', () =>{
     modal('[data-modal]', '.modal');
     menuCards();
     sendForm();
-    slider('.offer__slider-prev', '.offer__slider-next', '#total', '#current', ".offer__slider-wrapper");
+    slider({prevBtnSelector: '.offer__slider-prev',
+            nextBtnSelector: '.offer__slider-next',
+            totalNumSelector: '#total',
+            currentNumSelector: '#current',
+            parentSelector: ".offer__slider-wrapper",
+            slideSelector: '.offer__slider'});
     calculator();
 });
 
