@@ -17,6 +17,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     menuCards();
     sendForm();
     slider('.offer__slider-prev', '.offer__slider-next', '#total', '#current', ".offer__slider-wrapper");
-    calculator('.calculating__result span');
+    calculator();
 });
 
