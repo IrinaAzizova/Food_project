@@ -1285,6 +1285,33 @@ a {
   text-align: right;
 }
 
+@media (max-width: 1200px) {
+  .footer .container {
+    padding: 0 80px;
+  }
+}
+@media (max-width: 768px) {
+  .footer .container {
+    padding: 0 70px;
+  }
+  .footer .subtitle {
+    font-size: 17px;
+  }
+  .footer .link {
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .footer .container {
+    padding: 0 15px;
+  }
+  .footer .subtitle {
+    font-size: 14px;
+  }
+  .footer .link {
+    font-size: 13px;
+  }
+}
 .modal {
   position: fixed;
   top: 0;

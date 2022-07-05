@@ -22,3 +22,39 @@
         text-align: right;
     }
 }
+
+@media (max-width: 1200px){
+    .footer {
+        .container {
+            padding: 0 80px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .footer {
+        .container {
+            padding: 0 70px;
+        }
+        .subtitle {
+            font-size: 17px;
+        }
+        .link {
+            font-size: 15px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .footer {
+        .container {
+            padding: 0 15px;
+        }
+        .subtitle {
+            font-size: 14px;
+        }
+        .link {
+            font-size: 13px;
+        }
+    }
+}
