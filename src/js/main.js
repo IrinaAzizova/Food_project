@@ -1,5 +1,7 @@
 'use strict';
 
+import "core-js/stable";
+
 import tabs from "./blocks/tabs";
 import timer from "./blocks/timer";
 import modal from "./blocks/modal";
